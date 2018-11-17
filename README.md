@@ -1,5 +1,11 @@
 # :fire: Realtime-Recommender :fire:
-## Arhitecture
+## Technologies
+* Python3.x
+* Apache Spark
+* Apache Kafka
+* MongoDb
+---
+## Arhitecture Summary
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/Recommendation_system_architecture.png)
 
 ### Representation Transformation
@@ -25,3 +31,4 @@ This module is an extra layer before the calculation of the final score of the n
 This stage is the final processing step before calculate the model results. In this step we check the quality of the results, maybe the algorithm has calculated results that are not business right or meaningful. In other words will apply business roles in the results.
 ### Calculate Results
 This module has as an input a matrix with scores and as an output the recommendation result with the right representation. It’s a transformation step, we can say that is the reverse procedure of the module ‘pre-processing’.
+---
