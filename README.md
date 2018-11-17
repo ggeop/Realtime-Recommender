@@ -2,6 +2,8 @@
 ## Application High-level Design
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/High_level_design.png)
 
+The above architecture shows how to implement a recommendation system from  an application perspective. The users will use a web interface which will be connected with a Kafka server. In kafka terms the web application(producer) will be enrolled in a specific Kafka topic. In the other side a spark application(maybe a Spark streaming application) will consume the data of the Kafka. Spark supports machine learning libraries so in could run the models with a very fast way. But, Spark is good for very large data, maybe in our case the Spark overhead will be high. The model will be stored in flat file database like MongoDB. Then the Spark will re be enrolled in an another topic for results (as a producer) and the web application will be also enrolled in this topic as consumer.
+
 ---
 
 ## Technologies
