@@ -1,4 +1,9 @@
 # :fire: Realtime-Recommender :fire:
+## Application High-level Design
+![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/High_level_design.png)
+
+---
+
 ## Technologies
 * Python3.x
 * Apache Spark
