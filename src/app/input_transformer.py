@@ -4,16 +4,20 @@ import json
 This preprocessing step is about to getting the input data and
 transform it in a common format.
 '''
+class Transformer(object):
+    def __init__(self, input, target = None):
+        self.input = input
+        self.target = target
+        # TODO: ADD LOGGER
 
-class JsonTransformer(object):
-    def __init__(self, array, target):
-        self.document = json.loads(array)
-        return self.document[target]
+class JsonTransformer(Transformer):
+    def transform(self):
+        return self.input[self.target]
 
-class DataframeTransformer(object):
-    def __init__(self, dataframe, target):
-        return dataframe[target]
+class DataframeTransformer(Transformer):
+    def transform(self):
+        return self.input[self.target]
 
-class TupleTransformer(object):
-    def __init__(self, tuple):
-        return list(tuple)
+class TupleTransformer(Transformer):
+    def transform(self):
+        return list(self.input)
