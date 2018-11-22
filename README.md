@@ -40,9 +40,8 @@ src\
 ```
 ## Run Application engine
 The Recommender application could support different modes and transformation pipelines:
-#### Application mode
-* Static mode
-* Streaming mode
+
+#### Application modes
 
 **Static Mode High-level Design**
 
