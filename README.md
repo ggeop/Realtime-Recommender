@@ -5,9 +5,9 @@ This application is a blueprint of a **realtime recommender** system with variou
 ---
 
 ### Technologies
-* *Python 3.x*
-* *Apache Streaming Spark (soon!)*
-* *Apache Kafka (soon!)*
+* [*Python 3.x*](https://www.python.org/downloads/release/python-360/)
+* [*Apache Streaming Spark*](https://spark.apache.org/streaming/) (soon!)
+* [*Apache Kafka*](https://kafka.apache.org/) (soon!)
 
 ### Libraries
 * [Gensim](https://radimrehurek.com/gensim/tutorial.html)
