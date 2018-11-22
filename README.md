@@ -6,14 +6,14 @@ This application is a blueprint of a **realtime recommender** system with variou
 
 ### Technologies
 * *Python 3.x*
-* *Apache Streaming Spark **(soon!)** *
-* *Apache Kafka **(soon!)** *
+* *Apache Streaming Spark (soon!)*
+* *Apache Kafka (soon!)*
 
 ### Libraries
-* Gensim - (https://radimrehurek.com/gensim/tutorial.html)
-* Scikit-learn - (https://scikit-learn.org/stable/)
-* Pandas - (https://pandas.pydata.org/)
-* Numpy - (http://www.numpy.org/)
+* [Gensim](https://radimrehurek.com/gensim/tutorial.html)
+* [Scikit-learn](https://scikit-learn.org/stable/)
+* [Pandas](https://pandas.pydata.org/)
+* [Numpy](http://www.numpy.org/)
 
 ---
 
