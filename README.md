@@ -18,6 +18,9 @@ This application is a blueprint of a **realtime recommender** system with variou
 ```
 src\
 |__app\
+|  |__init__.py
+|
+|__recommender\
 |    | __init__.py
 |    |input_transformer.py
 |    |post_processor.py
@@ -27,6 +30,8 @@ src\
 |    |scorer.py
 |    |settings.py
 |    |__models\
+|    |__
+|       |__init__.py
 |       |model_1.py
 |       |model_2.py
 |       |...
@@ -73,7 +78,7 @@ The models will be stored in flat file format in MongoDB database. Then the Spar
 This module is the first layer of our system. The aim of this module is to change the representation of the input in the appropriate structure. After this process, may we could filter the data from not useful values, wrong values or reduce the dimensionality of the data.
 
 **Pre-processing**
-This module refers to the transformation applied to the data before feeding to the algorithm.With preprocessing is a technique that is used to convert the raw data into a clean data set. Another aspect is that data set should be formatted in such a way that more than one Machine Learning and Deep Learning algorithms are executed in one data set, and best out of them is chosen. Preprocessing techniques are:
+This module refers to the transformation applied to the data before feeding to the algorithm. With preprocessing is a technique that is used to convert the raw data into a clean data set. Another aspect is that data set should be formatted in such a way that more than one Machine Learning and Deep Learning algorithms are executed in one data set, and best out of them is chosen. Preprocessing techniques are:
 * Data rescale : This is a useful for optimization algorithms and also it’s useful for algorithms that weights inputs like neural networks
 * Binarize data: This method transform the data using a binary threshold. All values above the threshold are marked as one and all equal or below are marked as zero.
 * Standardize data: This technique is useful to transform attributes with Gaussian distributions and differing means and standard deviations to a Gaussian distribution with mean of zero and a standard deviation of one.
