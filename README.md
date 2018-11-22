@@ -3,6 +3,7 @@
 This application is a blueprint of a **realtime recommender** system with various functionallities. The recommender engine could host different models and different pipelines of data transformations.
 
 ---
+
 ### Technologies
 * Python 3.x
 * Apache Streaming Spark (soon!)
@@ -12,6 +13,7 @@ This application is a blueprint of a **realtime recommender** system with variou
 * Gensim
 
 ---
+
 ### Application structure
 
 ```
@@ -53,6 +55,8 @@ The Recommender application could support different modes and transformation pip
 **Static Mode High-level Design**
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/static_mode.png)
 
+---
+
 **Streaming Mode High-level Design**
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/streaming_mode.png)
 
@@ -61,6 +65,7 @@ The above architecture shows how to implement a streaming recommendation system 
 The models will be stored in flat file format in MongoDB database. Then the Spark will be enrolled in an another topic for the results (as a producer) and a web application will be also enrolled in this topic as consumer.
 
 ---
+
 #### Application pipeline
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/recommendation_engine.png)
 
