@@ -53,7 +53,7 @@ src\
 ## Recommender Engine Architecture
 The Recommender application could support different modes and transformation pipelines:
 
-#### Application modes
+### Application modes
 
 **Static Mode High-level Design**
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/static_mode.png)
@@ -69,7 +69,7 @@ The models will be stored in flat file format in MongoDB database. Then the Spar
 
 ---
 
-#### Application pipeline
+### Application pipeline
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/recommendation_engine.png)
 
 
