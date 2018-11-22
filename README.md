@@ -9,6 +9,9 @@ This application is a blueprint of a **realtime recommender** system with variou
 * Apache Kafka (soon!)
 * MongoDb (soon!)
 
+### Libraries
+* Gensim
+
 ---
 ### Application structure
 
