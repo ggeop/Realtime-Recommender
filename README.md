@@ -1,4 +1,4 @@
-# Realtime-Recommender
+#  :small_red_triangle: Realtime-Recommender
 ## About the Project
 This application is a blueprint of a **realtime recommender** system with various functionallities. The recommender engine could host different models and different pipelines of data transformations.
 
@@ -10,7 +10,10 @@ This application is a blueprint of a **realtime recommender** system with variou
 * Apache Kafka (soon!)
 
 ### Libraries
-* Gensim
+* Gensim - (https://radimrehurek.com/gensim/tutorial.html)
+* Scikit-learn - (https://scikit-learn.org/stable/)
+* Pandas - (https://pandas.pydata.org/)
+* Numpy - (http://www.numpy.org/)
 
 ---
 
@@ -47,7 +50,7 @@ src\
     |scorer_tests.py
 
 ```
-## Run Application engine
+## Recommender Engine Architecture
 The Recommender application could support different modes and transformation pipelines:
 
 #### Application modes
