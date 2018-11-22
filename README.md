@@ -1,17 +1,23 @@
-# Realtime-Recommender
+[![Build Status](https://travis-ci.com/ggeop/Realtime-Recommender.svg?token=82JpHh3MEmRmWpfnbt6K&branch=master)](https://travis-ci.com/ggeop/Realtime-Recommender)
+#  :small_red_triangle: Realtime-Recommender
 ## About the Project
 This application is a blueprint of a **realtime recommender** system with various functionallities. The recommender engine could host different models and different pipelines of data transformations.
 
 ---
+
 ### Technologies
-* Python 3.x
-* Apache Streaming Spark (soon!)
-* Apache Kafka (soon!)
+* [*Python 3.x*](https://www.python.org/downloads/release/python-360/)
+* [*Apache Streaming Spark*](https://spark.apache.org/streaming/) (soon!)
+* [*Apache Kafka*](https://kafka.apache.org/) (soon!)
 
 ### Libraries
-* Gensim
+* [Gensim](https://radimrehurek.com/gensim/tutorial.html)
+* [Scikit-learn](https://scikit-learn.org/stable/)
+* [Pandas](https://pandas.pydata.org/)
+* [Numpy](http://www.numpy.org/)
 
 ---
+
 ### Application structure
 
 ```
@@ -45,13 +51,15 @@ src\
     |scorer_tests.py
 
 ```
-## Run Application engine
+## Recommender Engine Architecture
 The Recommender application could support different modes and transformation pipelines:
 
-#### Application modes
+### Application modes
 
 **Static Mode High-level Design**
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/static_mode.png)
+
+---
 
 **Streaming Mode High-level Design**
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/streaming_mode.png)
@@ -61,7 +69,8 @@ The above architecture shows how to implement a streaming recommendation system 
 The models will be stored in flat file format in MongoDB database. Then the Spark will be enrolled in an another topic for the results (as a producer) and a web application will be also enrolled in this topic as consumer.
 
 ---
-#### Application pipeline
+
+### Application pipeline
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/recommendation_engine.png)
 
 
