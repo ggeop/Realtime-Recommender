@@ -1,4 +1,4 @@
-# :fire: Realtime-Recommender :fire:
+# Realtime-Recommender
 ## About the Project
 This application is a blueprint of a **realtime recommender** system with various functionallities. The recommender engine could host different models and different pipelines of data transformations.
 
@@ -7,7 +7,6 @@ This application is a blueprint of a **realtime recommender** system with variou
 * Python 3.x
 * Apache Streaming Spark (soon!)
 * Apache Kafka (soon!)
-* MongoDb (soon!)
 
 ### Libraries
 * Gensim
@@ -52,11 +51,10 @@ The Recommender application could support different modes and transformation pip
 #### Application modes
 
 **Static Mode High-level Design**
-
-soon!!
+![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/static_mode.png)
 
 **Streaming Mode High-level Design**
-![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/High_level_design.png)
+![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/streaming_mode.png)
 
 The above architecture shows how to implement a streaming recommendation system from  an application perspective. The users will use a web interface which will be connected with a Kafka server. In kafka terms the web application(producer) will be enrolled in a specific Kafka topic. On the other side a Spark application(a Spark streaming application) will consume the data of the Kafka.
 
@@ -64,7 +62,7 @@ The models will be stored in flat file format in MongoDB database. Then the Spar
 
 ---
 #### Application pipeline
-![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/Recommendation_system_architecture.png)
+![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/recommendation_engine.png)
 
 
 * Representation Transformation
@@ -93,7 +91,8 @@ This module is the ‘heart’ of the model. The similarity measure is the measu
 * Jaccard distance
 
 In other words the model compares the similarity of the new entry with the existing objects. As a result is a ‘ similarity score’ . Then, the model should update (retrain) the stored model with this new entry and calculate the new weights.
-NOTE: The retrain process is computationally intensive and maybe in a production server with high traffic is difficult to retrain the model in each user entity. So, it depends with the case the design of the system and how frequent will update the model weights.
+
+**NOTE:** The retrain process is computationally intensive and maybe in a production server with high traffic is difficult to retrain the model in each user entity. So, it depends with the case the design of the system and how frequent will update the model weights.
 
 **Scoring**
 This module is an extra layer before the calculation of the final score of the new entity. Maybe the model has an extra layer with weights (e.g depends with the Helixes) or another model for weights calculation.
