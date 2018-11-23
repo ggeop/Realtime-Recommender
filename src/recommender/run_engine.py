@@ -12,10 +12,3 @@ if __name__ == '__main__':
     parser.add_argument(--'set_model', type=str, required=True, help = 'Set the type of model')
 
     agrs, unknown, = parser.parse_known_args()
-
-    #Transform input data
-    json_transformer = JsonTransformer(INPUT, TARGET)
-    transformed_input = json_transformer.transform()
-
-    #Create vectorizer
-    vectorizer = Vectorizer(WEIGHT_MEASURE,ARGS)
