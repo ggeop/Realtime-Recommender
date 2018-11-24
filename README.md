@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.com/ggeop/Realtime-Recommender.svg?token=82JpHh3MEmRmWpfnbt6K&branch=master)](https://travis-ci.com
-/ggeop/Realtime-Recommender)
-
+[![Build Status](https://travis-ci.com/ggeop/Realtime-Recommender.svg?token=82JpHh3MEmRmWpfnbt6K&branch=master)](https://travis-ci.com/ggeop/Realtime-Recommender)
 [![CodeFactor](https://www.codefactor.io/repository/github/ggeop/realtime-recommender/badge)](https://www.codefactor.io/repository/github/ggeop/realtime-recommender)
 #  :small_red_triangle: Realtime-Recommender
 ## About the Project
