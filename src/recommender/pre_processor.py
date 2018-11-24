@@ -12,6 +12,7 @@ class Cleaner(object):
 
     '''
     Clean function:
+    -Split the documents to list with words
     -Tranform capital to lower
     -Remove stopwords
     -Remove words with frequency lower than the threshold
@@ -26,8 +27,11 @@ class Cleaner(object):
         elif not self.stop_list and self.lower_case:
             texts = [[word for word in document.lower().split()] for document in self.documents]
         elif not self.stop_list and not self.lower_case:
-            texts = [[word for word in document] for document in self.documents]
+            texts = [[word for word in document.split()] for document in self.documents]
 
+        return texts
+
+    def filter(self, texts):
         frequency = defaultdict(int)
         for text in texts:
             for token in text:
@@ -36,6 +40,8 @@ class Cleaner(object):
         '''texts format [['..', '..'],['..'],[],...]'''
         texts = [[token for token in text if frequency[token] > 1]
                  for text in texts]
+
+        return texts
 
 
 class Tokenizer(object):
