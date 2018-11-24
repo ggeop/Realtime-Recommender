@@ -1,6 +1,8 @@
 import logging
 from gensim import corpora
 from collections import defaultdict
+from recommender.settings import *
+
 
 class Cleaner(object):
     def __init__(self, documents, stop_list=None, lower_case=False, lower_threshold=False):
@@ -13,7 +15,7 @@ class Cleaner(object):
     '''
     Clean function:
     -Split the documents to list with words
-    -Tranform capital to lower
+    -Transform capital to lower
     -Remove stopwords
     -Remove words with frequency lower than the threshold
     '''
@@ -38,7 +40,7 @@ class Cleaner(object):
                 frequency[token] += 1
 
         '''texts format [['..', '..'],['..'],[],...]'''
-        texts = [[token for token in text if frequency[token] > 1]
+        texts = [[token for token in text if frequency[token] > TRESHOLD]
                  for text in texts]
 
         return texts
@@ -52,6 +54,6 @@ class Tokenizer(object):
     '''Mapping words with unique ids'''
     def create_dictionary(self):
         return corpora.Dictionary(self.texts)
-        #TODO: dictionary.save('/tmp/....dict')  # store the dictionary, for future reference
+        # TODO: dictionary.save('/tmp/....dict')  # store the dictionary, for future reference
 
 

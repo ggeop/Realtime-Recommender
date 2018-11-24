@@ -26,7 +26,6 @@ class ModelManager(object):
             logging.info('No trained model')
             return None
 
-
     def create_model(self):
 
         if self.model_name == 'LsiModel':
@@ -38,7 +37,7 @@ class ModelManager(object):
                                       size=100,
                                       window=5,
                                       min_count=1)
-            #TODO: ADD size, window, min_count to model configuration
+            # TODO: ADD size, window, min_count to model configuration
 
     '''Convert the query to LSI space'''
     def query(self, new_text):

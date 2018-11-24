@@ -23,9 +23,4 @@ class JsonTransformer(Transformer):
 
 class DataframeTransformer(Transformer):
     def transform(self):
-        return self.input[self.target]
-
-
-class TupleTransformer(Transformer):
-    def transform(self):
-        return list(self.input)
+        return list(self.input[self.target])

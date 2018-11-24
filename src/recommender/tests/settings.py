@@ -1,0 +1,1 @@
+from recommender.settings import *

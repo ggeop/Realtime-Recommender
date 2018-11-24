@@ -34,3 +34,22 @@ class CleanerTests(unittest.TestCase):
         cleaner = Cleaner(documents=self.documents)
 
         self.assertEqual(cleaner.clean(), [['Test', 'documents'], ['Stop', 'list', 'words']])
+
+
+class FilterTests(unittest.TestCase):
+
+    def test_filter_below_threshold(self):
+        documents = ['word1 word2', 'word1']
+        cleaner = Cleaner(documents=documents)
+        texts = cleaner.clean()
+        self.assertEqual(cleaner.filter(texts),[[], []])
+
+    def test_filter_above_threshold(self):
+        documents = ['word1 word1 word2', 'word1']
+        cleaner = Cleaner(documents=documents)
+        texts = cleaner.clean()
+        self.assertEqual(cleaner.filter(texts),[['word1', 'word1'], ['word1']])
+
+
+if __name__ == '__main__':
+    unittest.main()
