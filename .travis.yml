@@ -3,7 +3,6 @@ python:
   - "2.7"
   - "3.6"
 script:
-  -- nosetests -v --with-coverage --cover-./src/recommender/tests/* --cover-package=noseselecttests noseselecttests/tests.py
-  
+  - nosetests -v --with-coverage --cover-tests --cover-package=noseselecttests noseselecttests/tests.py
 notifications:
   email: false
