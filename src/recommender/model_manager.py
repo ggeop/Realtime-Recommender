@@ -1,7 +1,6 @@
-import os, sys
 import logging
-from gensim import models, similarities
-from recommender.settings import GENSIM
+from gensim import similarities
+from recommender.settings import *
 
 
 class ModelManager(object):
@@ -14,8 +13,7 @@ class ModelManager(object):
         logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
     def load_model(self):
-        model_dumps = os.path.join(sys.path[0], 'model_dumps')
-        model_files = [f for f in os.listdir(model_dumps)]
+        model_files = [f for f in os.listdir(MODEL_DUMPS_PATH)]
 
         saved_model = self.model_name + '.model'
 
@@ -29,11 +27,10 @@ class ModelManager(object):
     def create_model(self):
 
         if self.model_name == 'LsiModel':
-            models.GENSIM['LsiModel'](corpus=self.corpus,
-                                      id2word=self.dictionary,
-                                      num_topic = self.num_topics)
+            return GENSIM['LsiModel'](corpus=self.corpus,
+                                      id2word=self.dictionary)
         if self.model_name == 'Word2Vec':
-            models.GENSIM['Word2Vec'](self.texts,
+            return GENSIM['Word2Vec'](self.texts,
                                       size=100,
                                       window=5,
                                       min_count=1)
