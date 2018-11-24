@@ -8,7 +8,7 @@ from recommender.input_transformer import JsonTransformer, DataframeTransformer
 class JsonTransformerTests(unittest.TestCase):
 
     def test_correct_input(self):
-        json_transformer = JsonTransformer({'target_key':'test text'}, 'target_key' )
+        json_transformer = JsonTransformer({'target_key': 'test text'}, 'target_key')
         self.assertEqual(json_transformer.transform(), 'test text')
 
     def test_wrong_key(self):
@@ -26,7 +26,7 @@ class DataframeTransformerTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        data = np.array([[1, 2],[3, 4]])
+        data = np.array([[1, 2], [3, 4]])
         self.dataframe = pd.DataFrame(data=data, columns=['Target_col', 'Col2'])
 
     def test_correct_input(self):
