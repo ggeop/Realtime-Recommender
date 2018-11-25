@@ -54,3 +54,6 @@ src\
 * [Application modes](https://github.com/ggeop/Realtime-Recommender.wiki.git)
 * [Application pipeline](https://github.com/ggeop/Realtime-Recommender.wiki.git)
 ---
+
+### Licence
+This work is licensed under a [GNU General Public License v3.0](https://github.com/ggeop/Realtime-Recommender/blob/master/LICENSE)
