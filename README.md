@@ -51,8 +51,8 @@ src\
 
 ```
 ### Application Overview
-* [Application modes](https://github.com/ggeop/Realtime-Recommender.wiki.git)
-* [Application pipeline](https://github.com/ggeop/Realtime-Recommender.wiki.git)
+* [Application modes](https://github.com/ggeop/Realtime-Recommender/wiki/Application-modes)
+* [Application pipeline](https://github.com/ggeop/Realtime-Recommender/wiki/Application-pipeline)
 ---
 
 ### Licence
