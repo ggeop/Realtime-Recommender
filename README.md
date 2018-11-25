@@ -5,6 +5,7 @@
 # :partly_sunny:Realtime-Recommender
 ## About the Project
 This application is a blueprint of a **Recommender Engine** with various functionalities. The recommender could support different models and different transformation pipelines.
+![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/recommendation_engine.png)
 
 ---
 
