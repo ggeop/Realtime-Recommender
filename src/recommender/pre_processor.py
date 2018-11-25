@@ -3,6 +3,8 @@ from gensim import corpora
 from collections import defaultdict
 from recommender.settings import THRESHOLD
 
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
 
 class Cleaner(object):
     def __init__(self, documents, stop_list=None, lower_case=False, lower_threshold=False):
@@ -50,9 +52,10 @@ class Cleaner(object):
 class Tokenizer(object):
     def __init__(self, texts):
         self.texts = texts
-        logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
     def create_dictionary(self):
-        """Mapping words with unique ids"""
         return corpora.Dictionary(self.texts)
-        # TODO: dictionary.save('/tmp/....dict')  # store the dictionary, for future reference
+
+    def create_corpus(self):
+        dictionary = self.create_dictionary()
+        return [dictionary.doc2bow(text) for text in self.texts]

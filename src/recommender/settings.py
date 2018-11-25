@@ -4,8 +4,7 @@ from gensim.models import Word2Vec, LsiModel
 
 # Gensim Models
 GENSIM = {'Word2Vec': Word2Vec,
-          'LsiModel': LsiModel
-         }
+          'LsiModel': LsiModel}
 
 # Minimum number of words in documents
 THRESHOLD = 2

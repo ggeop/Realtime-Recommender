@@ -4,7 +4,7 @@
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 # :partly_sunny:Realtime-Recommender
 ## About the Project
-This application is a blueprint of a **realtime recommender** system with various functionallities. The recommender engine could host different models and different pipelines of data transformations.
+This application is a blueprint of a **Recommender Engine** with various functionalities. The recommender could support different models and different transformation pipelines.
 
 ---
 
@@ -27,6 +27,7 @@ src\
 |__recommender\
 |    | __init__.py
 |    |input_transformer.py
+|    |model_feeder.py
 |    |model_manager.py
 |    |post_processor.py
 |    |pre_processot.py
@@ -36,8 +37,7 @@ src\
 |    |__models\
 |    |__
 |       |__init__.py
-|       |model_1.py
-|       |model_2.py
+|       |Word2Vec_model.py
 |       |...
 |     
 |__tests\

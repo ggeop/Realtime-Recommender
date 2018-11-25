@@ -1,7 +1,7 @@
 import logging
 from argparse import ArgumentParser
-from gensim.test.utils import common_texts
 from recommender.model_manager import ModelManager
+from recommender.model_feeder import StaticFeeder
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
@@ -16,14 +16,16 @@ def main():
     args, unknown, = parser.parse_known_args()
 
     logging.info('RECOMMENDER STARTS..')
+    logging.info('MODEL MODE = {} AND MODEL= {}'.format(args.set_mode, args.model))
     if args.set_mode == 'static':
-        logging.info('MODEL MODE = {} AND MODEL= {}'.format(args.set_mode, args.model))
-        model_manager = ModelManager(model_name='Word2Vec', texts=common_texts)
-        model = model_manager.load_model()
-        if not model:
-            model = model_manager.create_model()
-            model_manager.train_model(model, common_texts)
-            logging.info('MODEL IS READY!')
+        feeder = StaticFeeder(args.set_mode, args.input_format, args.model)
+        model_input = feeder.create_input()
+    model_manager = ModelManager(model_name=args.model, texts=model_input[0], dictionary=model_input[1], corpus=model_input[2])
+    model = model_manager.load_model()
+    if not model:
+        model = model_manager.create_model()
+        model_manager.train_model(model, texts=model_input[0], dictionary=model_input[1], corpus=model_input[2])
+        logging.info('MODEL IS READY!')
 
 
 if __name__ == '__main__':

@@ -37,9 +37,9 @@ class ModelManager(object):
                                       window=WINDOW,
                                       min_count=MIN_COUNT)
 
-    def train_model(self, model,  text=None, corpus=None, dictionary=None):
+    def train_model(self, model,  texts=None, corpus=None, dictionary=None):
         if self.model_name == 'Word2Vec':
-            model.train(text,
+            model.train(texts,
                         total_examples=TOTAL_EXAMPLES,
                         epochs=EPOCHS)
         elif self.model_name == 'LsiModel':
