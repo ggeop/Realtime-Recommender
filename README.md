@@ -32,7 +32,6 @@ src\
 |    |pre_processot.py
 |    |results_calculator.py
 |    |run_engine.py
-|    |scorer.py
 |    |settings.py
 |    |__models\
 |    |__
