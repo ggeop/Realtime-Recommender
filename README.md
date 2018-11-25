@@ -12,7 +12,7 @@ This application is a blueprint of a **realtime recommender** system with variou
 
  Technologies | Libraries
  ---|---
-[*Python 3.x*](https://www.python.org/downloads/release/python-360/), [*Apache Streaming Spark*](https://spark.apache.org/streaming/) (soon!), [*Apache Kafka*](https://kafka.apache.org/) (soon!)  | [Gensim](https://radimrehurek.com/gensim/tutorial.html), [Scikit-learn](https://scikit-learn.org/stable/), [Numpy](http://www.numpy.org/), [Pandas](https://pandas.pydata.org/)
+[*Python 3.x*](https://www.python.org/downloads/release/python-360/), [*Apache Streaming Spark*](https://spark.apache.org/streaming/) + [*Apache Kafka*](https://kafka.apache.org/) (soon!)  | [Gensim](https://radimrehurek.com/gensim/tutorial.html), [Scikit-learn](https://scikit-learn.org/stable/), [Pandas](https://pandas.pydata.org/), [Numpy](http://www.numpy.org/)
 
 
 ---
