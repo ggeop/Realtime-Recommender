@@ -50,21 +50,5 @@ src\
     |scorer_tests.py
 
 ```
-## Recommender Engine Architecture
-The Recommender application could support different modes and transformation pipelines:
-
-### Application modes
-
-**Static Mode High-level Design**
-![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/static_mode.png)
-
----
-
-**Streaming Mode High-level Design**
-![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/streaming_mode.png)
-
-The above architecture shows how to implement a streaming recommendation system from  an application perspective. The users will use a web interface which will be connected with a Kafka server. In kafka terms the web application(producer) will be enrolled in a specific Kafka topic. On the other side a Spark application(a Spark streaming application) will consume the data of the Kafka.
-
-The models will be stored in flat file format in MongoDB database. Then the Spark will be enrolled in an another topic for the results (as a producer) and a web application will be also enrolled in this topic as consumer.
 
 ---
