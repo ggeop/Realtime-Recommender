@@ -1,7 +1,7 @@
 import os
 import logging
-from gensim import similarities
 from recommender.settings import GENSIM, MODEL_DUMPS_PATH
+from recommender.models.Word2Vec_model import SIZE, WINDOW, MIN_COUNT
 
 
 class ModelManager(object):
@@ -26,25 +26,23 @@ class ModelManager(object):
         return None
 
     def create_model(self):
-
         if self.model_name == 'LsiModel':
+            logging.info('Create LsiModel')
             return GENSIM['LsiModel'](corpus=self.corpus,
                                       id2word=self.dictionary)
         if self.model_name == 'Word2Vec':
+            logging.info('Create Word2Vec')
             return GENSIM['Word2Vec'](self.texts,
-                                      size=100,
-                                      window=5,
-                                      min_count=1)
+                                      size=SIZE,
+                                      window=WINDOW,
+                                      min_count=MIN_COUNT)
 
-    def query(self, new_text):
-        """Convert the query to LSI space"""
-        vec_bow = self.dictionary.doc2bow(new_text)
-        return self.model[vec_bow]
-
-    def calculate_similarity(self, new_text):
-        """Transform corpus to LSI space and index it"""
-        vec_model = self.query(new_text)
-        index = similarities.MatrixSimilarity(self.model[self.corpus])
-        sims = index[vec_model]
-
-        return sorted(enumerate(sims), key=lambda item: -item[1])
+    def train_model(self, model,  text=None, corpus=None, dictionary=None):
+        if self.model_name == 'Word2Vec':
+            trained_model = model.train(text, total_examples=1, epochs=1)
+        elif self.model_name == 'LsiModel':
+            trained_model = model.train(corpus=corpus, id2word=dictionary)
+        else:
+            return None
+        trained_model.save(MODEL_DUMPS_PATH)
+        return trained_model

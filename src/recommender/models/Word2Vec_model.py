@@ -1,9 +1,9 @@
-'''
+"""
 MODEL CONFIGURATION SETTINGS
-'''
+"""
 
-#VECTORIZER CONFIG SETTINGS
-WEIGHT_MEASURE='TfidfVectorizer'
+# Vectorizer
+WEIGHT_MEASURE = 'TfidfVectorizer'
 ARGS = {
     "stop_words": "english",
     "lowercase": True,
@@ -11,6 +11,11 @@ ARGS = {
     "use_idf": False,
 }
 
-SIMILARITY_MEASURE = 'linear_kernel'
+# Model
+SIZE = 3
+WINDOW = 10
+MIN_COUNT = 2
 
+# Recommendation
+SIMILARITY_MEASURE = 'linear_kernel'
 NUMBER_OF_RECOMMENDATIONS = 3
