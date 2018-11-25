@@ -1,7 +1,7 @@
 import logging
 from gensim import corpora
 from collections import defaultdict
-from recommender.settings import TRESHOLD
+from recommender.settings import THRESHOLD
 
 
 class Cleaner(object):
@@ -41,7 +41,7 @@ class Cleaner(object):
             for token in text:
                 frequency[token] += 1
 
-        texts = [[token for token in text if frequency[token] > TRESHOLD]
+        texts = [[token for token in text if frequency[token] > THRESHOLD]
                  for text in texts]
 
         return texts
@@ -52,7 +52,7 @@ class Tokenizer(object):
         self.texts = texts
         logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-    """Mapping words with unique ids"""
     def create_dictionary(self):
+        """Mapping words with unique ids"""
         return corpora.Dictionary(self.texts)
         # TODO: dictionary.save('/tmp/....dict')  # store the dictionary, for future reference
