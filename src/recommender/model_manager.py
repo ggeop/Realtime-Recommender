@@ -1,6 +1,7 @@
+import os
 import logging
 from gensim import similarities
-from recommender.settings import *
+from recommender.settings import GENSIM, MODEL_DUMPS_PATH
 
 
 class ModelManager(object):
@@ -20,9 +21,9 @@ class ModelManager(object):
         if saved_model in model_files:
             logging.info('Exist trained model')
             return GENSIM[self.model_name].load(saved_model)
-        else:
-            logging.info('No trained model')
-            return None
+
+        logging.info('No trained model')
+        return None
 
     def create_model(self):
 
@@ -34,18 +35,16 @@ class ModelManager(object):
                                       size=100,
                                       window=5,
                                       min_count=1)
-            # TODO: ADD size, window, min_count to model configuration
 
-    '''Convert the query to LSI space'''
     def query(self, new_text):
+        """Convert the query to LSI space"""
         vec_bow = self.dictionary.doc2bow(new_text)
         return self.model[vec_bow]
 
-    '''Transform corpus to LSI space and index it'''
     def calculate_similarity(self, new_text):
+        """Transform corpus to LSI space and index it"""
         vec_model = self.query(new_text)
         index = similarities.MatrixSimilarity(self.model[self.corpus])
         sims = index[vec_model]
 
-        '''Return the sorted similarities'''
         return sorted(enumerate(sims), key=lambda item: -item[1])

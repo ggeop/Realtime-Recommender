@@ -21,7 +21,3 @@ if __name__ == '__main__':
             initialized_model = model_manager.create_model()
 
         initialized_model.train(['new_text'])
-        #TODO: Create component for new text reading
-
-
-

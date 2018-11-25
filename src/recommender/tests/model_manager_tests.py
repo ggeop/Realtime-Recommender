@@ -22,6 +22,7 @@ class CreateModelTests(unittest.TestCase):
         model_manager = ModelManager('Word2Vec')
         model = models.Word2Vec(texts, size=100, window=5, min_count=1).__class__
         self.assertEqual(model, model_manager.create_model().__class__)
+        # TODO: ADD size, window, min_count to model configuration
 
     def test_create_Lsi_model(self):
         model_manager = ModelManager('LsiModel',corpus=common_corpus, dictionary=common_dictionary )
