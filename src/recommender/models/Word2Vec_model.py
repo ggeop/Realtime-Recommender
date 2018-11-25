@@ -15,6 +15,8 @@ ARGS = {
 SIZE = 3
 WINDOW = 10
 MIN_COUNT = 2
+TOTAL_EXAMPLES = 2
+EPOCHS = 2
 
 # Recommendation
 SIMILARITY_MEASURE = 'linear_kernel'
