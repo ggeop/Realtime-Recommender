@@ -22,6 +22,8 @@ class Cleaner(object):
         logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
     def clean(self):
+        if type(self.documents) == str:
+            self.documents = [self.documents]
         if self.stop_list and self.lower_case:
             texts = [[word for word in document.lower().split() if word not in self.stop_list]
                      for document in self.documents]

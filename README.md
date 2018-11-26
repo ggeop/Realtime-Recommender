@@ -2,7 +2,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/ggeop/realtime-recommender/badge)](https://www.codefactor.io/repository/github/ggeop/realtime-recommender)
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 # :partly_sunny:Realtime-Recommender
-## About the Project
+## About the Application
 This application is a blueprint of a **Recommender Engine** with various functionalities. The recommender could support different models and different transformation pipelines.
 ![alt text](https://github.com/ggeop/Realtime-Recommender/blob/master/imgs/recommendation_engine.png)
 
