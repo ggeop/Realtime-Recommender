@@ -18,6 +18,3 @@ class StaticFeeder(object):
         input_transformer = InputTransformer(self.model_name, user_input)
 
         self.model_manager.train_model(self.model, texts=input_transformer.texts)
-
-
-
