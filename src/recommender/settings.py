@@ -4,7 +4,8 @@ from gensim.models import Word2Vec, LsiModel
 
 # Gensim Models
 GENSIM = {'Word2Vec': Word2Vec,
-          'LsiModel': LsiModel}
+          'LsiModel': LsiModel
+         }
 
 # Minimum number of words in documents
 THRESHOLD = 2
@@ -15,9 +16,10 @@ if not os.path.exists(MODEL_DUMPS_PATH):
     os.makedirs(MODEL_DUMPS_PATH, mode=0o777)
 
 # Target Database
-DATABASE = {'host' : 'localhost',
-            'user' : 'remote',
-            'password' : 'remote',
-            'db' : 'your_database'
-            'target_table' : 'target_table'
-            'target_column' : 'target_column'}
+DATABASE = {'host': 'localhost',
+            'user': 'remote',
+            'password': 'remote',
+            'db': '',
+            'target_table': '',
+            'target_column': ''
+            }

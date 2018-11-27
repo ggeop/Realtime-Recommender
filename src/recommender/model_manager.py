@@ -3,8 +3,9 @@ import logging
 from gensim.test.utils import get_tmpfile
 from recommender.settings import GENSIM, MODEL_DUMPS_PATH
 from recommender.models.Word2Vec_model import SIZE, WINDOW, MIN_COUNT, TOTAL_EXAMPLES, EPOCHS
-from recommender.input_transformer import DatabaseTransformer
-from utils import SqlConnector
+from recommender.utils import SqlConnector
+from recommender.input_transformer import DataframeTransformer, DocumentsTransformer
+from recommender.settings import DATABASE
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
@@ -14,7 +15,6 @@ class ModelManager(object):
         self.model_name = model_name
         self.saved_model = self.model_name + '.model'
         logging.info('THE MODEL {} INITIALIZED SUCCESSFULLY!'.format(self.saved_model))
-        self.loaded_model = self.load_model()
 
     def load_model(self):
         logging.info('SEARCH TO LOAD A TRAINED MODEL - {}'.format(self.saved_model))
@@ -29,17 +29,16 @@ class ModelManager(object):
 
     def create_model(self, texts=None, dictionary=None, corpus=None):
         logging.info('TRAIN NEW MODEL - {}'.format(self.saved_model))
-        sql_connection = SqlConnector()
-        documents = sql_connection.selecting_query()
-        texts = DocumentsTransformer(self.model_name, documents)
-        if not texts and not dictionary and not corpus:
-                raise ImportError('Insert texts or dictionary or corpus')
         if self.model_name == 'LsiModel':
             logging.info('CREATE LsiModel')
             return GENSIM['LsiModel'](corpus=corpus,
-                                       id2word=dictionary)
+                                      id2word=dictionary)
         if self.model_name == 'Word2Vec':
-            logging.info('CREATE Word2Vec')
+            sql_connection = SqlConnector()
+            documents = sql_connection.selecting_query()
+            documents = DataframeTransformer(documents, DATABASE['target_column']).transform()
+            texts = DocumentsTransformer(self.model_name, documents).texts
+            logging.info('CREATE Word2Vec MODEL!')
             return GENSIM['Word2Vec'](texts,
                                       size=SIZE,
                                       window=WINDOW,

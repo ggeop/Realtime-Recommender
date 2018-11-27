@@ -2,7 +2,6 @@ import logging
 from argparse import ArgumentParser
 from recommender.model_manager import ModelManager
 from recommender.model_feeder import StaticFeeder
-from recommender.input_transformer import DocumentsTransformer
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
@@ -19,10 +18,12 @@ def main():
     logging.info('RECOMMENDER STARTS..')
     logging.info('MODEL MODE = {} AND MODEL= {}'.format(args.set_mode, args.model))
     model_manager = ModelManager(model_name=args.model)
-    model = model_manager.loaded_model
+    model = model_manager.load_model()
     if not model:
+        print(model)
         new_model = model_manager.create_model()
         model_manager.save_model(new_model)
+        model = model_manager.load_model()
     logging.info('APPLICATION STARTS..')
     if args.set_mode == 'static':
         feeder = StaticFeeder(args.set_mode, args.input_format, args.model, model, model_manager)
