@@ -2,6 +2,8 @@
   <dictionary name="geop">
     <words>
       <w>dataframe</w>
+      <w>gensim</w>
+      <w>vectorizer</w>
     </words>
   </dictionary>
 </component>
