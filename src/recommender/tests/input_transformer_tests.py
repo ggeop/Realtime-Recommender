@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 import numpy as np
 
-from recommender.input_transformer import JsonTransformer, DataframeTransformer
+from recommender.input_transformer import JsonTransformer, DataframeTransformer, DocumentsTransformer
 
 
 class JsonTransformerTests(unittest.TestCase):
@@ -37,6 +37,41 @@ class DataframeTransformerTests(unittest.TestCase):
         with self.assertRaises(KeyError) as raises:
             dataframe_transformer = DataframeTransformer(self.dataframe, 'wrong_column')
             dataframe_transformer.transform()
+
+
+class DocumentsTransformerTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        self.documents = ['word1 word2', 'word3']
+
+    def test_correct_input_Word2Vec(self):
+        model = 'Word2Vec'
+        document_transformer = DocumentsTransformer(model, self.documents)
+        self.assertEqual(document_transformer.texts, [['word1', 'word2'], ['word3']])
+
+    def test_sting_input_Word2Vec(self):
+        model = 'Word2Vec'
+        string_documents = 'word1, word2, word3'
+        document_transformer = DocumentsTransformer(model, string_documents)
+        self.assertEqual(document_transformer.texts, [['word1,', 'word2,', 'word3']])
+
+    def test_sting_input_no_spaces(self):
+        model = 'Word2Vec'
+        string_documents = 'word1,word2,word3'
+        document_transformer = DocumentsTransformer(model, string_documents)
+        self.assertEqual(document_transformer.texts, [['word1,word2,word3']])
+
+    def test_dict_output_in_Word2Vec(self):
+        model = 'Word2Vec'
+        string_documents = 'word1,word2,word3'
+        document_transformer = DocumentsTransformer(model, string_documents)
+        self.assertEqual(document_transformer.dictionary, None)
+
+    def test_corpus_output_in_Word2Vec(self):
+        model = 'Word2Vec'
+        string_documents = 'word1,word2,word3'
+        document_transformer = DocumentsTransformer(model, string_documents)
+        self.assertEqual(document_transformer.corpus, None)
 
 
 if __name__ == '__main__':
