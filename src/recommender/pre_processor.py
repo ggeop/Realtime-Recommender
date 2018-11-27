@@ -1,5 +1,5 @@
 import logging
-from gensim import corpora
+from gensim.corpora import Dictionary
 from collections import defaultdict
 from recommender.settings import THRESHOLD
 
@@ -56,7 +56,7 @@ class Tokenizer(object):
         self.texts = texts
 
     def create_dictionary(self):
-        return corpora.Dictionary(self.texts)
+        return Dictionary(self.texts)
 
     def create_corpus(self):
         dictionary = self.create_dictionary()
