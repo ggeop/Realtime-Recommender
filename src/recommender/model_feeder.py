@@ -1,5 +1,5 @@
 import logging
-from recommender.input_transformer import InputTransformer
+from recommender.input_transformer import DocumentsTransformer
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
@@ -14,7 +14,7 @@ class StaticFeeder(object):
 
     def run(self):
         logging.info('WAITING FOR USER INPUT..')
-        user_input = input('INSERT TO THE MODEL: ')
-        input_transformer = InputTransformer(self.model_name, user_input)
+        documents = input('INSERT TO THE MODEL: ')
+        input_transformer = DocumentsTransformer(self.model_name, documents)
 
         self.model_manager.train_model(self.model, texts=input_transformer.texts)

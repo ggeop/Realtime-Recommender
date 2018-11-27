@@ -13,3 +13,11 @@ THRESHOLD = 2
 MODEL_DUMPS_PATH = os.path.join(sys.path[0], 'model_dumps')
 if not os.path.exists(MODEL_DUMPS_PATH):
     os.makedirs(MODEL_DUMPS_PATH, mode=0o777)
+
+# Target Database
+DATABASE = {'host' : 'localhost',
+            'user' : 'remote',
+            'password' : 'remote',
+            'db' : 'your_database'
+            'target_table' : 'target_table'
+            'target_column' : 'target_column'}

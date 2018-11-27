@@ -3,7 +3,7 @@ from recommender.pre_processor import Cleaner, Tokenizer
 
 
 class Transformer(object):
-    def __init__(self, input_data, target=None):
+    def __init__(self, input_data=None, target=None):
         """
         This prepossessing step is about to getting the input data and
         transform it in a common format (a list).
@@ -25,7 +25,7 @@ class DataframeTransformer(Transformer):
         return list(self.input_data[self.target])
 
 
-class InputTransformer(object):
+class DocumentsTransformer(object):
     def __init__(self, model, documents):
         models = {'Word2Vec_model': Word2Vec_model}
         saved_model = model + '_model'
