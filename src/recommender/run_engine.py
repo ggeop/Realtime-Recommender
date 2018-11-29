@@ -20,7 +20,6 @@ def main():
     model_manager = ModelManager(model_name=args.model)
     model = model_manager.load_model()
     if not model:
-        print(model)
         new_model = model_manager.create_model()
         model_manager.save_model(new_model)
         model = model_manager.load_model()

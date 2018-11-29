@@ -40,7 +40,7 @@ class DataframeTransformerTests(unittest.TestCase):
 
 
 class DocumentsTransformerTests(unittest.TestCase):
-    @classmethod
+
     def setUpClass(self):
         self.documents = ['word1 word2', 'word3']
 

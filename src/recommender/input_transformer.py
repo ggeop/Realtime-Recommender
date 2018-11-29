@@ -37,11 +37,5 @@ class DocumentsTransformer(object):
 
         self.texts = self.cleaner.clean()
         tokenizer = Tokenizer(self.texts)
-        if models[saved_model].DICTIONARY_FLAG:
-            self.dictionary = tokenizer.create_dictionary()
-        else:
-            self.dictionary = None
-        if models[saved_model].CORPUS_FLAG:
-            self.corpus = tokenizer.create_corpus()
-        else:
-            self.corpus = None
+        self.dictionary = tokenizer.dictionary
+        self.corpus = tokenizer.corpus
