@@ -40,7 +40,7 @@ class DataframeTransformerTests(unittest.TestCase):
 
 
 class DocumentsTransformerTests(unittest.TestCase):
-
+    @classmethod
     def setUpClass(self):
         self.documents = ['word1 word2', 'word3']
 
@@ -60,18 +60,6 @@ class DocumentsTransformerTests(unittest.TestCase):
         string_documents = 'word1,word2,word3'
         document_transformer = DocumentsTransformer(model, string_documents)
         self.assertEqual(document_transformer.texts, [['word1,word2,word3']])
-
-    def test_dict_output_in_Word2Vec(self):
-        model = 'Word2Vec'
-        string_documents = 'word1,word2,word3'
-        document_transformer = DocumentsTransformer(model, string_documents)
-        self.assertEqual(document_transformer.dictionary, None)
-
-    def test_corpus_output_in_Word2Vec(self):
-        model = 'Word2Vec'
-        string_documents = 'word1,word2,word3'
-        document_transformer = DocumentsTransformer(model, string_documents)
-        self.assertEqual(document_transformer.corpus, None)
 
 
 if __name__ == '__main__':
