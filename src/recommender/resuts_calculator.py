@@ -1,21 +1,26 @@
-from gensim import similarities
 
 
 class ResultsCalculator(object):
-    def __init__(self, model, dictionary=None, corpus=None):
-        self.model = model
-        self.dictionary = dictionary
-        self.corpus = corpus
+    def __init__(self, dataset, result_column, vectorizer, similarity_measure, number_of_recommendations):
+        self.dataset = dataset
+        self.result_column = result_column
+        self.similarity_measure = similarity_measure
+        self.vectorizer = vectorizer
+        self.number_of_recommendations = number_of_recommendations
 
-    def query(self, new_text):
-        """Convert the query to LSI space"""
-        vec_bow = self.dictionary.doc2bow(new_text)
-        return self.model[vec_bow]
+    def query(self, train_tdm, new_text):
+        test_tdm = self.vectorizer.transform(new_text)
+        result, score = self.calculate_similarity(train_tdm, test_tdm)
+        return result, score
 
-    def calculate_similarity(self, new_text):
-        """Transform corpus to LSI space and index it"""
-        vec_model = self.query(new_text)
-        index = similarities.MatrixSimilarity(self.model[self.corpus])
-        sims = index[vec_model]
+    def calculate_similarity(self, train_tdm, test_tdm):
+        similarities = self.similarity_measure(train_tdm, test_tdm)
 
-        return sorted(enumerate(sims), key=lambda item: -item[1])
+        '''Extract the most close organization from the sorted list'''
+        index = similarities.argsort(axis=None)[-self.number_of_recommendations:]
+
+        '''Extract the similarity score'''
+        score = similarities[index]
+
+        '''Return the organization name'''
+        return self.dataset[self.result_column][index][::-1], score[::-1]

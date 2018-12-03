@@ -2,24 +2,7 @@ import unittest
 import pandas as pd
 import numpy as np
 
-from recommender.input_transformer import JsonTransformer, DataframeTransformer, DocumentsTransformer
-
-
-class JsonTransformerTests(unittest.TestCase):
-
-    def test_correct_input(self):
-        json_transformer = JsonTransformer({'target_key': 'test text'}, 'target_key')
-        self.assertEqual(json_transformer.transform(), 'test text')
-
-    def test_wrong_key(self):
-        with self.assertRaises(KeyError) as raises:
-            json_transformer = JsonTransformer({'target_key': 'test text'}, 'wrong_key')
-            json_transformer.transform()
-
-    def test_null_value(self):
-        with self.assertRaises(KeyError) as raises:
-            json_transformer = JsonTransformer({'target_key': 'test text'}, ' ')
-            json_transformer.transform()
+from recommender.input_transformer import JsonTransformer, DataframeTransformer
 
 
 class DataframeTransformerTests(unittest.TestCase):
@@ -30,13 +13,11 @@ class DataframeTransformerTests(unittest.TestCase):
         self.dataframe = pd.DataFrame(data=data, columns=['Target_col', 'Col2'])
 
     def test_correct_input(self):
-        dataframe_transformer = DataframeTransformer(self.dataframe, 'Target_col')
-        self.assertEqual(dataframe_transformer.transform(), [1, 3])
+        dataframe_transformer = DataframeTransformer('Target_col')
+        self.assertEqual(dataframe_transformer.transform(self.dataframe), [1, 3])
 
     def test_wrong_column(self):
-        with self.assertRaises(KeyError) as raises:
-            dataframe_transformer = DataframeTransformer(self.dataframe, 'wrong_column')
-            dataframe_transformer.transform()
+        pass
 
 
 class DocumentsTransformerTests(unittest.TestCase):
@@ -44,23 +25,8 @@ class DocumentsTransformerTests(unittest.TestCase):
     def setUpClass(self):
         self.documents = ['word1 word2', 'word3']
 
-    def test_correct_input_Word2Vec(self):
-        model = 'Word2Vec'
-        document_transformer = DocumentsTransformer(model, self.documents)
-        self.assertEqual(document_transformer.texts, [['word1', 'word2'], ['word3']])
-
-    def test_sting_input_Word2Vec(self):
-        model = 'Word2Vec'
-        string_documents = 'word1, word2, word3'
-        document_transformer = DocumentsTransformer(model, string_documents)
-        self.assertEqual(document_transformer.texts, [['word1,', 'word2,', 'word3']])
-
     def test_sting_input_no_spaces(self):
-        model = 'Word2Vec'
-        string_documents = 'word1,word2,word3'
-        document_transformer = DocumentsTransformer(model, string_documents)
-        self.assertEqual(document_transformer.texts, [['word1,word2,word3']])
-
+        pass
 
 if __name__ == '__main__':
     unittest.main()

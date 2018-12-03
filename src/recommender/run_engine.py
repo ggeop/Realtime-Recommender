@@ -9,23 +9,18 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 def main():
     parser = ArgumentParser()
 
-    parser.add_argument('--set_mode', type=str, required=True, help='Set engine mode type')
-    parser.add_argument('--input_format', type=str, required=True, help='Set the input')
-    parser.add_argument('--model', type=str, required=True, help='Set the type of model')
+    parser.add_argument('--set_mode', type=str, required=False, help='Set engine mode type')
+    parser.add_argument('--input_format', type=str, required=False, help='Set the input')
+    parser.add_argument('--model', type=str, required=False, help='Set the type of model')
 
     args, unknown, = parser.parse_known_args()
 
     logging.info('RECOMMENDER STARTS..')
     logging.info('MODEL MODE = {} AND MODEL= {}'.format(args.set_mode, args.model))
-    model_manager = ModelManager(model_name=args.model)
-    model = model_manager.load_model()
-    if not model:
-        new_model = model_manager.create_model()
-        model_manager.save_model(new_model)
-        model = model_manager.load_model()
+    model_manager = ModelManager()
     logging.info('APPLICATION STARTS..')
     if args.set_mode == 'static':
-        feeder = StaticFeeder(args.set_mode, args.input_format, args.model, model, model_manager)
+        feeder = StaticFeeder(model_manager=model_manager)
         feeder.run()
 
 

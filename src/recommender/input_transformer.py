@@ -1,41 +1,27 @@
-from recommender.models import Word2Vec_model, Lsi_model
-from recommender.pre_processor import Cleaner, Tokenizer
+"""
+This prepossessing step is about to getting the input data and
+transform it in a common format (a list).
+"""
 
 
 class Transformer(object):
-    def __init__(self, input_data=None, target=None):
-        """
-        This prepossessing step is about to getting the input data and
-        transform it in a common format (a list).
-        """
-        self.input_data = input_data
+    def __init__(self,  target=None):
         self.target = target
 
-    def transform(self):
-        return self.input_data
+    def transform(self, input_data):
+        pass
 
 
 class JsonTransformer(Transformer):
-    def transform(self):
-        return self.input_data[self.target]
+    def transform(self, input_data):
+        return input_data[self.target]
 
 
 class DataframeTransformer(Transformer):
-    def transform(self):
-        return list(self.input_data[self.target])
+    def transform(self, input_data):
+        return list(input_data[self.target])
 
 
 class DocumentsTransformer(object):
-    def __init__(self, model, documents):
-        models = {'Word2Vec_model': Word2Vec_model,
-                  'Lsi_model': Lsi_model}
-        saved_model = model + '_model'
-        self.cleaner = Cleaner(documents=documents,
-                               stop_list=models[saved_model].STOP_LIST,
-                               lower_case=models[saved_model].LOWER_CASE,
-                               lower_threshold=models[saved_model].LOWER_THRESHOLD)
-
-        self.texts = self.cleaner.clean()
-        tokenizer = Tokenizer(self.texts)
-        self.dictionary = tokenizer.dictionary
-        self.corpus = tokenizer.corpus
+    def __init__(self):
+        pass

@@ -1,20 +1,20 @@
 import logging
-from gensim.corpora import Dictionary
 from collections import defaultdict
 from recommender.settings import THRESHOLD
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
+"""
+Clean function:
+-Split the documents to list with words
+-Transform capital to lower
+-Remove stopwords
+-Remove words with frequency lower than the threshold
+"""
+
 
 class Cleaner(object):
     def __init__(self, documents, stop_list=None, lower_case=False, lower_threshold=False):
-        """
-        Clean function:
-        -Split the documents to list with words
-        -Transform capital to lower
-        -Remove stopwords
-        -Remove words with frequency lower than the threshold
-        """
         self.documents = documents
         self.stop_list = stop_list
         self.lower_case = lower_case
@@ -49,15 +49,3 @@ class Cleaner(object):
                  for text in texts]
 
         return texts
-
-
-class Tokenizer(object):
-    def __init__(self, texts):
-        self.texts = texts
-
-    def create_dictionary(self):
-        return Dictionary(self.texts)
-
-    def create_corpus(self):
-        dictionary = self.create_dictionary()
-        return [dictionary.doc2bow(text) for text in self.texts]
