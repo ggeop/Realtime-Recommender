@@ -1,4 +1,0 @@
-recommender/tests
-
-require 'coveralls'
-Coveralls.wear!
