@@ -27,6 +27,6 @@ class StaticFeeder(object):
                                                similarity_measure=cosine_similarity,
                                                number_of_recommendations=3)
 
-        result, score = results_calculator.query(train_tdm,[documents])
+        result, score = results_calculator.query(train_tdm, [documents])
         print(result)
 

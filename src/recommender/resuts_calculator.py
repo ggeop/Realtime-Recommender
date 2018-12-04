@@ -16,11 +16,11 @@ class ResultsCalculator(object):
     def calculate_similarity(self, train_tdm, test_tdm):
         similarities = self.similarity_measure(train_tdm, test_tdm)
 
-        '''Extract the most close organization from the sorted list'''
+        """Extract the most close organization from the sorted list"""
         index = similarities.argsort(axis=None)[-self.number_of_recommendations:]
 
-        '''Extract the similarity score'''
+        """Extract the similarity score"""
         score = similarities[index]
 
-        '''Return the organization name'''
+        """Return the organization name"""
         return self.dataset[self.result_column][index][::-1], score[::-1]
